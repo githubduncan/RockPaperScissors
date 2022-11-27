@@ -4,29 +4,33 @@ function getComputerChoice () {
     return arr [rand]
 }
 
+let playerScore = 0;
+let computerScore = 0;
+const results = document.querySelector('.results')
+
 function playRound(playerSelection, computerSelection) {
     
     
     let choice = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
     if (choice == computerSelection) {
-        console.log("It is a tie")
+        results.innerText = "It is a tie"   
     } else if (choice == "Rock" && computerSelection == "Paper") {
-        console.log("You lose, paper beats rock")
+        results.innerText = "You lose, paper beats rock"
         computerScore++
     } else if (choice =="Rock" && computerSelection == "Scissors") {
-        console.log("You win,Rock beats scissors")
+        results.innerText= "You win,Rock beats scissors"
         playerScore++
     } else if (choice == "Paper" && computerSelection == "Rock") {
-        console.log("You win, Paper beats rock")
+        results.innerText="You win, Paper beats rock"
         playerScore++
     } else if (choice == "Paper" && computerSelection == "Scissors") {
-        console.log("You lose, scissors beats paper")
+        results.innerText="You lose, scissors beats paper"
         computerScore++
     } else if (choice == "Scissors" && computerSelection == "Rock") {
-        console.log("You lose,rock beats scissors") 
+        results.innerText="You lose,rock beats scissors"
         computerScore++
     } else if (choice == "Scissors" && computerSelection == "Paper") {
-        console.log("You win, scissors beat paper")
+        results.innerText="You win, scissors beat paper"
         playerScore++
     } else {
         ("Error, please enter a valid input")
@@ -34,23 +38,17 @@ function playRound(playerSelection, computerSelection) {
     
     }
 
-    let computerScore = 0
-    let playerScore = 0
+    const rock = document.getElementById("rock")
+    rock.addEventListener('click', function () {
+        playRound("Rock",getComputerChoice())
+    })
 
-    function game () {
+    const paper = document.getElementById("paper")
+    paper.addEventListener('click', function () {
+        playRound("Paper",getComputerChoice())
+    })
 
-        for(let i=0;i<=5;i++){
-            let playerChoice = prompt("What is your choice?")
-            playRound(playerChoice, getComputerChoice())
-            console.log(`The score is now Player:${playerScore} and Computer:${computerScore}`)
-        }
-
-        if(computerScore > playerScore) {
-            console.log("The computer have won")
-        } else if (playerScore > computerScore){
-            console.log("Congrats you have won")
-        } else {
-            console.log("It is a tie")
-        }
-    }
-  
+    const scissors = document.getElementById("scissors")
+    scissors.addEventListener('click', function () {
+        playRound("scissors",getComputerChoice())
+    })
