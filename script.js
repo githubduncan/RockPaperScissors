@@ -6,8 +6,7 @@ function getComputerChoice () {
 
 function playRound(playerSelection, computerSelection) {
     
-    let computerScore = 0
-    let playerScore = 0
+    
     let choice = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
     if (choice == computerSelection) {
         console.log("It is a tie")
@@ -33,5 +32,25 @@ function playRound(playerSelection, computerSelection) {
         ("Error, please enter a valid input")
     }
     
+    }
+
+    let computerScore = 0
+    let playerScore = 0
+
+    function game () {
+
+        for(let i=0;i<=5;i++){
+            let playerChoice = prompt("What is your choice?")
+            playRound(playerChoice, getComputerChoice())
+            console.log(`The score is now Player:${playerScore} and Computer:${computerScore}`)
+        }
+
+        if(computerScore > playerScore) {
+            console.log("The computer have won")
+        } else if (playerScore > computerScore){
+            console.log("Congrats you have won")
+        } else {
+            console.log("It is a tie")
+        }
     }
   
