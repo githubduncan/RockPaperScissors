@@ -7,6 +7,11 @@ function getComputerChoice () {
 let playerScore = 0;
 let computerScore = 0;
 const results = document.querySelector('.results')
+const player = document.querySelector('.player')
+const computer = document.querySelector('.computer')
+
+
+
 
 function playRound(playerSelection, computerSelection) {
     
@@ -35,6 +40,15 @@ function playRound(playerSelection, computerSelection) {
     } else {
         ("Error, please enter a valid input")
     }
+    player.innerText = playerScore;
+    computer.innerText = computerScore;
+
+    
+    if (playerScore == 5) {
+        alert("Congrats you have won!")
+    } else if (computerScore == 5) {
+        alert("Sorry, the computer won :(")
+    }
     
     }
 
@@ -52,3 +66,5 @@ function playRound(playerSelection, computerSelection) {
     scissors.addEventListener('click', function () {
         playRound("scissors",getComputerChoice())
     })
+
+    
